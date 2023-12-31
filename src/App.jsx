@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
+import HomePage from './Pages/HomePage/HomePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,7 +8,8 @@ function App() {
   return (
     <>
       {/* <Login></Login> */}
-      <RegistrationForm></RegistrationForm>
+      {/* <RegistrationForm></RegistrationForm> */}
+      <HomePage></HomePage>
     </>
   )
 }
