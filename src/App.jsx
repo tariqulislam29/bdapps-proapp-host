@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import './App.css'
-import HomePage from './Pages/HomePage/HomePage'
+import CheckLength from './Pages/CreateContent/CheckLength'
+import Navbar from './Pages/Navbar/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <Navbar></Navbar>
       {/* <Login></Login> */}
       {/* <RegistrationForm></RegistrationForm> */}
-      <HomePage></HomePage>
+      {/* <HomePage></HomePage> */}
+      <CheckLength></CheckLength>
     </>
   )
 }
