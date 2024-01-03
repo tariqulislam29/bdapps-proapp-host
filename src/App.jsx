@@ -1,14 +1,9 @@
-import { useState } from 'react'
 import './App.css'
-import CheckLength from './Pages/CreateContent/CheckLength'
 import Navbar from './Pages/Navbar/Navbar'
-import List from './Pages/Application/List'
-import New from './Pages/Application/New'
-import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
-import MyProfile from './Pages/Profile/MyProfile'
+import ChangePassword from './Pages/Profile/ChangePassword'
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
@@ -19,7 +14,9 @@ function App() {
       {/* <CheckLength></CheckLength> */}
       {/* <List></List> */}
       {/* <New></New> */}
-      <MyProfile></MyProfile>
+      {/* <MyProfile></MyProfile> */}
+      {/* <UpdateProfile></UpdateProfile> */}
+      <ChangePassword></ChangePassword>
     </>
   )
 }
