@@ -23,7 +23,7 @@ const Navbar = () => {
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
               <a class="navbar-brand" href="#">
-                Error Club
+                HostLab
               </a>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item me-2">

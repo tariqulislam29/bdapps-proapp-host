@@ -1,6 +1,6 @@
 import './App.css'
+import NewContent from './Pages/CreateContent/NewContent'
 import Navbar from './Pages/Navbar/Navbar'
-import ChangePassword from './Pages/Profile/ChangePassword'
 
 function App() {
  
@@ -16,7 +16,11 @@ function App() {
       {/* <New></New> */}
       {/* <MyProfile></MyProfile> */}
       {/* <UpdateProfile></UpdateProfile> */}
-      <ChangePassword></ChangePassword>
+      {/* <ChangePassword></ChangePassword> */}
+      {/* <ErrorList></ErrorList> */}
+      {/* <AllContent></AllContent> */}
+      {/* <BatchContent></BatchContent> */}
+      <NewContent></NewContent>
     </>
   )
 }

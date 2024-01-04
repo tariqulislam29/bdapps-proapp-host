@@ -27,8 +27,20 @@ const ChangePassword = () => {
                     <td>
                       <form className="px-5 mb-5 py-3">
                         <div class="form-group mb-3">
+                          <label className="mb-1" for="currentPassword">
+                            Current Password:
+                          </label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="currentPassword"
+                            placeholder="Enter current password"
+                            name="password"
+                          />
+                        </div>
+                        <div class="form-group mb-3">
                           <label className="mb-1" for="password">
-                            Password:
+                           New Password:
                           </label>
                           <input
                             type="password"
