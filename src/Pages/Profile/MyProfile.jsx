@@ -1,7 +1,11 @@
 import React from 'react';
+import Navbar from '../Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 const MyProfile = () => {
     return (
+       <>
+       <Navbar></Navbar>
         <div>
         <div class="row gx-2">
             <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
@@ -62,9 +66,10 @@ const MyProfile = () => {
                             <tr >
                                <td  style={{width:"40%"}} className='fw-bold'>Edit:</td>
                                <td  style={{width:"60%"}}>
+                               <Link to="/updateProfile" >
                                  <button type="submit" class="btn border text-white" style={{ background: "green"}}>
                          Edit Your Profile
-                        </button></td>
+                        </button>  </Link></td>
                             </tr>
                         </tbody>
                     </table>
@@ -74,7 +79,7 @@ const MyProfile = () => {
             </div>
             <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
         </div>
-    </div>
+    </div></>
     );
 };
 

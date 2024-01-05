@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -27,9 +28,12 @@ const Navbar = () => {
               </a>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item me-2">
-                  <a class="nav-link active" aria-current="page" href="#">
+                <Link to="/home" class="nav-link active text-decoration-none">
+               
                     Home
-                  </a>
+                 
+                  </Link>
+                 
                 </li>
                 <li class="nav-item me-2 dropdown">
                   <a
@@ -43,31 +47,41 @@ const Navbar = () => {
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <Link to="/batchContent" class="dropdown-item">
+                     
                         <i class="fa fa-file-medical"></i> Batch
-                      </a>
+                     
+                      </Link>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <Link to="/newContent"  class="dropdown-item">
+                     
                         <i class="fa fa-pen"></i> New
-                      </a>
+                     
+                      </Link>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <Link to="/checkLength" class="dropdown-item">
+                     
                         <i class="fa fa-ruler-combined"></i> Check Length
-                      </a>
+                     
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li class="nav-item me-2">
-                  <a class="nav-link " aria-current="page" href="#">
+                <Link to="/allContent" class="nav-link ">
+                
                     <i class="fa fa-table"></i> All Content
-                  </a>
+                 
+                  </Link>
                 </li>
                 <li class="nav-item me-2">
-                  <a class="nav-link " aria-current="page" href="#">
+                <Link to="/errorList" class="nav-link ">
+                
                     <i class="fa fa-exclamation"></i> Error List
-                  </a>
+                 
+                  </Link>
                 </li>
                 <li class="nav-item me-2 dropdown">
                   <a
@@ -81,14 +95,15 @@ const Navbar = () => {
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <Link to="/application/list" class="dropdown-item">
+                     
                         <i class="fa fa-list"></i> List
-                      </a>
+                    </Link>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                    <Link to="/application/new" class="dropdown-item">
                         <i class="fa fa-pen"></i> New
-                      </a>
+                        </Link>
                     </li>
                   </ul>
                 </li>
@@ -107,22 +122,24 @@ const Navbar = () => {
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="#">
+                      <Link to="/myProfile" class="dropdown-item">
                           <i class="fa fa-list"></i> My profile
-                        </a>
+                          </Link>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                      <Link to="/changePassword" class="dropdown-item">
                           <i class="fa fa-pen"></i> Change Password
-                        </a>
+                          </Link>
                       </li>
                     </ul>
                   </li>
                 </ul>
                 <li class="navbar-nav  me-2">
+                <Link to="/login" className='pt-2' >
                   <button className="rounded-pill bg-danger px-2">
                     Log Out
                   </button>
+                  </Link>
                 </li>
               </div>
             </div>

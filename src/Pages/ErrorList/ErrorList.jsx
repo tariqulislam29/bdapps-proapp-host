@@ -1,7 +1,10 @@
 import React from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const ErrorList = () => {
     return (
+     <>
+     <Navbar></Navbar>
       <div className="px-3">
         <div class="row gx-2">
           <div class="col-12 col-sm-12 col-lg-12 col-md-12">
@@ -40,7 +43,7 @@ const ErrorList = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></>
     );
 };
 

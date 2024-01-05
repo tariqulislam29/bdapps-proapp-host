@@ -1,33 +1,11 @@
 import React from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const BatchContent = () => {
-    // const handleDownload = async () => {
-    //     console.log("object");
-    //   try {
-    //     // Fetch the Excel file from the server
-    //     const response = await fetch("sample.xlsx", {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type":
-    //           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    //       },
-    //     });
-
-    //     // Check if the response is successful
-    //     if (!response.ok) {
-    //       throw new Error(`HTTP error! Status: ${response.status}`);
-    //     }
-
-    //     // Convert the response to a blob
-    //     const blob = await response.blob();
-
-    //     // Use the file-saver library to initiate the download
-    //     saveAs(blob, "sample.xlsx");
-    //   } catch (error) {
-    //     console.error("Error downloading file:", error);
-    //   }
-    // };
+  
     return (
+     <>
+     <Navbar></Navbar>
       <div>
         <div class="row gx-2">
           <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
@@ -60,7 +38,7 @@ const BatchContent = () => {
                     <td>
                       <div class="container py-5">
                         <h6 style={{ fontSize: "14px" }}>
-                          Upload Excel File::
+                          Upload Excel File:
                         </h6>
                         <div class="mb-3">
                           <input
@@ -111,7 +89,7 @@ const BatchContent = () => {
           </div>
           <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
         </div>
-      </div>
+      </div></>
     );
 };
 

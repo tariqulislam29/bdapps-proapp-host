@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const AllContent = () => {
     return (
-      <div className="px-3">
+     <>
+    <Navbar></Navbar>
+     <div className="px-3">
         <div class="row gx-2">
           <div class="col-12 col-sm-12 col-lg-12 col-md-12">
             <div class="py-3 w-100">
@@ -117,7 +120,7 @@ const AllContent = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></>
     );
 };
 

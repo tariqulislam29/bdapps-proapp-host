@@ -1,7 +1,10 @@
 import React from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const ChangePassword = () => {
     return (
+     <>
+     <Navbar></Navbar>
       <div>
         <div class="row gx-2">
           <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
@@ -81,7 +84,7 @@ const ChangePassword = () => {
           </div>
           <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
         </div>
-      </div>
+      </div></>
     );
 };
 

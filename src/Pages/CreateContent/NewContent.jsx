@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const NewContent = () => {
      const [forms, setForms] = useState([
@@ -24,20 +25,22 @@ const NewContent = () => {
      };
 
     return (
-      <div>
+     <>
+     <Navbar></Navbar>
+      <div className='px-1'>
         <div class="row gx-2">
           <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
 
           <div class="col-12 col-sm-12 col-lg-6 col-md-6">
-            <div className="pt-5">
-              <p className="text-start">
-                <span className="fw-normal">
+            <div className="pt-2">
+             
+                <span className="fw-normal text-start" style={{ fontSize: "12px" }}>
                   <span className="fw-bold">Note:</span> Maximum length of a
                   content is 300 characters.
                 </span>
-              </p>
+            
             </div>
-            <div class=" w-100">
+            <div class=" w-100 py-2">
               <table class="table w-100 border rounded-3">
                 <thead>
                   <tr>
@@ -64,11 +67,11 @@ const NewContent = () => {
                     <>
                       <tr className="mb-3">
                         <td colSpan={12}>
-                          <div className="p-5 border ">
+                          <div className="p-2 border ">
                             {" "}
                             <form key={index}>
-                              <div className=" mb-2">
-                                <label className="fw-bold fs-6 mb-2">
+                              <div className=" mb-1">
+                                <label className="fw-bold  mb-1"  style={{ fontSize: "14px" }}>
                                   Sub_keyword:
                                 </label>
                                 <div>
@@ -87,8 +90,8 @@ const NewContent = () => {
                                   />
                                 </div>
                               </div>
-                              <div className=" mb-2">
-                                <label className="fw-bold fs-6 mb-2">
+                              <div className=" mb-1">
+                              <label className="fw-bold  mb-1"  style={{ fontSize: "14px" }}>
                                   Date:
                                 </label>
                                 <div>
@@ -107,8 +110,8 @@ const NewContent = () => {
                                   />
                                 </div>
                               </div>
-                              <div className=" mb-2">
-                                <label className="fw-bold fs-6 mb-2">
+                              <div className=" mb-1">
+                              <label className="fw-bold  mb-1"  style={{ fontSize: "14px" }}>
                                   Content:
                                 </label>
                                 <div>
@@ -128,7 +131,7 @@ const NewContent = () => {
                               </div>
                               <button
                                 type="submit"
-                                className="bg-success text-white px-2 py-1 rounded-2 mt-5"
+                                className="bg-success text-white px-2 py-1 rounded-2 mt-2"
                                 onClick={(e) => handleAddForm(e,index)}
                                 style={{ fontSize: "13px" }}
                               >
@@ -141,9 +144,9 @@ const NewContent = () => {
                     </>
                   ))}
                 </tbody>
-                <div className="mt-3">
+                <div className="">
                   <div>
-                    <button  onClick={handleFormSubmit} className="w-100">
+                    <button  onClick={handleFormSubmit} className="w-100 text-white" style={{ background: "green"}}>
                       Submit
                     </button>
                   </div>
@@ -153,7 +156,7 @@ const NewContent = () => {
           </div>
           <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
         </div>
-      </div>
+      </div></>
     );
 };
 
