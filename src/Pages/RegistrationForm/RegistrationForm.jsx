@@ -1,131 +1,218 @@
+import axios from 'axios';
 import React from 'react';
-
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from 'react-router-dom';
+import { api } from '../Api/baseApi';
 const RegistrationForm = () => {
+    const navigate = useNavigate();
+    const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+    } = useForm();
+  const onSubmit = (data) => {
+   if (data.password === data.confirm_password) {
+     console.log(data);
+        axios({
+          method: "post",
+          url: `${api}/registration`,
+          data,
+         
+        }).then((res) => {
+          if (res) {
+          navigate("/login");
+          }
+        });
+    
+   }
+   else {
+     alert("Passwords Do Not Match");
+    } 
+    
+
+    };
+
     return (
       <>
-        <div class="container  " style={{ height: "97vh" }}>
-          <div class="row pt-5 pb-5 rounded-3 ">
-            <div class="col-sm-1 col-1 col-lg-3 col-md-3"></div>
-            <div class="col-sm-12 col-12 col-lg-6 col-md-6">
+        <div className="container  " style={{ height: "97vh" }}>
+          <div className="row pt-5 pb-5 rounded-3 ">
+            <div className="col-sm-1 col-1 col-lg-3 col-md-3"></div>
+            <div className="col-sm-12 col-12 col-lg-6 col-md-6">
               <div className=" border rounded-3">
                 <div className="d-flex bg-danger justify-content-between rounded-top">
                   <h5 className="text-start  rounded-top text-white py-2 ps-2">
                     Registration
                   </h5>
                   <div>
-                    <button
-                      type="submit"
-                      class="btn btn-danger border text-white m-2"
-                    >
-                      Login
-                    </button>
+                    <Link to={"/login"}>
+                      <button
+                        type="submit"
+                        className="btn btn-danger border text-white m-2"
+                      >
+                        Login
+                      </button>
+                    </Link>
                   </div>
                 </div>
-                <form className="px-5 mb-5 py-3">
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="email">Email:</label>
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="px-5 mb-5 py-3"
+                >
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="email">
+                      Email: <span className="text-danger">*</span>
+                    </label>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="email"
                       placeholder="Enter email"
                       name="email"
+                      {...register("email", { required: true })}
                     />
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="name">Name:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="name">
+                      Name: <span className="text-danger">*</span>
+                    </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="name"
                       placeholder="Enter name"
                       name="name"
+                      {...register("name", { required: true })}
                     />
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="phone">Phone:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="phone">
+                      Phone: <span className="text-danger">*</span>
+                    </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="phone"
                       placeholder="Enter phone"
                       name="phone"
+                      {...register("phone", {
+                        required: true,
+                        pattern: /^(?:\+88|01)(?:\d{9}|\d{10})$/,
+                      })}
                     />
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="gender">Gender:</label>
-                    <select class="form-control" id="gender" name="gender">
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="gender">
+                      Gender:
+                    </label>
+                    <select
+                      className="form-control"
+                      id="gender"
+                      name="gender"
+                      {...register("gender")}
+                    >
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="dob">Date of Birth:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="dob">
+                      Date of Birth:
+                    </label>
                     <input
                       type="date"
-                      class="form-control"
+                      className="form-control"
                       id="dob"
                       name="dob"
+                      {...register("dob")}
                     />
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="division">Division:</label>
-                    <select class="form-control" id="division" name="division">
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="division">
+                      Division:
+                    </label>
+                    <select
+                      className="form-control"
+                      id="division"
+                      name="division"
+                      {...register("division")}
+                    >
                       <option value="dhaka">Dhaka</option>
-                      {/* <!-- Add other divisions here --> */}
+                      <option value="Barishal">Barishal</option>
+                      <option value="Chattogram">Chattogram</option>
+                      <option value="Khulna">Khulna</option>
+                      <option value="Rajshahi">Rajshahi</option>
+                      <option value="Rangpur">Rangpur</option>
+                      <option value="Mymensingh">Mymensingh</option>
+                      <option value="Sylhet">Sylhet</option>
                     </select>
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="institute">Institute:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="institute">
+                      Institute:
+                    </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="institute"
                       placeholder="Enter institute"
                       name="institute"
+                      {...register("institute")}
                     />
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="study_level">Study Level:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="study_level">
+                      Study Level:
+                    </label>
                     <select
-                      class="form-control"
+                      className="form-control"
                       id="study_level"
                       name="study_level"
+                      {...register("study_level")}
                     >
                       <option value="university">University</option>
+                      <option value="College">College</option>
+                      <option value="School">School</option>
                       {/* <!-- Add other study levels here --> */}
                     </select>
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="password">Password:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="password">
+                      Password: <span className="text-danger">*</span>
+                    </label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="password"
                       placeholder="Enter password"
                       name="password"
+                      {...register("password", { required: true })}
                     />
                   </div>
-                  <div class="form-group mb-3">
-                    <label className="mb-1" for="confirm_password">Confirmation Password:</label>
+                  <div className="form-group mb-3">
+                    <label className="mb-1" htmlFor="confirm_password">
+                      Confirmation Password:{" "}
+                      <span className="text-danger">*</span>
+                    </label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="confirm_password"
                       placeholder="Confirm password"
                       name="confirm_password"
+                      {...register("confirm_password", { required: true })}
                     />
                   </div>
                   <div>
                     {" "}
-                    <button type="submit" class="btn btn-danger w-100">
+                    <button type="submit" className="btn btn-danger w-100">
                       Submit
                     </button>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="col-sm-1 col-1 col-lg-3 col-md-3"></div>
+            <div className="col-sm-1 col-1 col-lg-3 col-md-3"></div>
           </div>
         </div>
       </>

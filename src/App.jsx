@@ -1,23 +1,23 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import NewContent from './Pages/CreateContent/NewContent'
-import Navbar from './Pages/Navbar/Navbar'
-import Login from './Pages/Login/Login'
-import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
-import HomePage from './Pages/HomePage/HomePage'
-import CheckLength from './Pages/CreateContent/CheckLength'
+import AllContent from './Pages/AllContent/AllContent'
 import List from './Pages/Application/List'
 import New from './Pages/Application/New'
+import BatchContent from './Pages/CreateContent/BatchContent'
+import CheckLength from './Pages/CreateContent/CheckLength'
+import NewContent from './Pages/CreateContent/NewContent'
+import ErrorList from './Pages/ErrorList/ErrorList'
+import HomePage from './Pages/HomePage/HomePage'
+import Login from './Pages/Login/Login'
+import ChangePassword from './Pages/Profile/ChangePassword'
 import MyProfile from './Pages/Profile/MyProfile'
 import UpdateProfile from './Pages/Profile/UpdateProfile'
-import ChangePassword from './Pages/Profile/ChangePassword'
-import ErrorList from './Pages/ErrorList/ErrorList'
-import AllContent from './Pages/AllContent/AllContent'
-import BatchContent from './Pages/CreateContent/BatchContent'
+import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
 
 function App() {
  
 
+ 
   return (
     <>
      <BrowserRouter>
