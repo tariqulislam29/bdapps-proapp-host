@@ -29,9 +29,10 @@ const Login = () => {
     <>
       <div className="container text-center " style={{ height: "97vh" }}>
         <div className="row pt-5">
-          <div className="col-sm-12 col-12 col-lg-6 col-md-6">
+          <div className="col-sm-12 col-12 col-lg-4 col-md-3"></div>
+          <div className="col-sm-12 col-12 col-lg-5 col-md-6 pt-5">
             <div className=" border rounded-3">
-              <h5 className="text-start bg-danger rounded-top text-white py-2 ps-2">
+              <h5 className="text-start bg-black rounded-top text-white py-2 ps-2">
                 Login
               </h5>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,28 +66,20 @@ const Login = () => {
                     />
                   </div>
                 </div>
+                <Link to={"/registationform"} className="text-decoration-none">
+                  {" "}
+                  <p className="text-black ">Register for a New Account</p>
+                </Link>
                 <button
                   type="submit"
-                  className="btn btn-submit bg-danger text-white px-5 py-1 mb-5"
+                  className="btn btn-submit bg-black text-white px-5 py-1 mb-5"
                 >
                   Login
                 </button>
               </form>
             </div>
           </div>
-          <div className="col-sm-12 col-12 col-lg-6 col-md-6 px-5 text-start mt-5">
-            <h3 className="text-danger ">Register for a New Account</h3>
-            <hr />
-            <p>To Create a User Account</p>
-            <div>
-              {" "}
-              <Link to={"/registationform"}>
-                <button type="submit" className="btn  border px-3 py-1 mb-5">
-                  User
-                </button>
-              </Link>
-            </div>
-          </div>
+          <div className="col-sm-12 col-12 col-lg-4 col-md-3"></div>
         </div>
       </div>
     </>
