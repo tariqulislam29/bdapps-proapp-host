@@ -18,6 +18,7 @@ const Login = () => {
           url: `${api}/loginCheck`,
           data,
         }).then((res) => {
+          console.log(res);
           if (res) {
             // navigate("/login");
           }
