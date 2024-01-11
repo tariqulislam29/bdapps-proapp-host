@@ -16,32 +16,31 @@ import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
 
 function App() {
  
-
+  var staus = true;
  
   return (
     <>
-     <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/registationform" element={<RegistrationForm />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/checkLength" element={<CheckLength />} />
-      <Route path="/application/list" element={<List />} />
-      <Route path="/application/new" element={<New />} />
-      <Route path="/myProfile" element={<MyProfile />} />
-      <Route path="/updateProfile" element={<UpdateProfile />} />
-      <Route path="/changePassword" element={<ChangePassword />} />
-      <Route path="/errorList" element={<ErrorList />} />
-      <Route path="/allContent" element={<AllContent />} />
-      <Route path="/batchContent" element={<BatchContent />} />
-      <Route path="/newContent" element={<NewContent />} />
-      </Routes>
-    </BrowserRouter>
-     
-    
+      <BrowserRouter>
+        <Routes>
+         
+            <Route path="/registationform" element={<RegistrationForm />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/checkLength" element={<CheckLength />} />
+            <Route path="/application/list" element={<List />} />
+            <Route path="/application/new" element={<New />} />
+            <Route path="/myProfile" element={<MyProfile />} />
+            <Route path="/updateProfile" element={<UpdateProfile />} />
+            <Route path="/changePassword" element={<ChangePassword />} />
+            <Route path="/errorList" element={<ErrorList />} />
+            <Route path="/allContent" element={<AllContent />} />
+            <Route path="/batchContent" element={<BatchContent />} />
+            <Route path="/newContent" element={<NewContent />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App

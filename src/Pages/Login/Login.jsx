@@ -16,15 +16,23 @@ const Login = () => {
         axios({
           method: "post",
           url: `${api}/loginCheck`,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
           data,
         }).then((res) => {
-          console.log(res);
+         
+          document.cookie = `data = ${res.data.data.token} ; max-age=3600; path=/`;
+         
+         
           if (res) {
             // navigate("/login");
           }
         });
      
-    };
+  };
+  console.log("document.cookie:", document.cookie);
   return (
     <>
       <div className="container text-center " style={{ height: "97vh" }}>
@@ -66,10 +74,18 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                <Link to={"/registationform"} className="text-decoration-none">
+                <div className="mb-2">
                   {" "}
-                  <p className="text-black ">Register for a New Account</p>
-                </Link>
+                  <Link
+                    to={"/registationform"}
+                    className="text-decoration-none"
+                  >
+                    {" "}
+                    <span className="text-black ">
+                      Register for a New Account
+                    </span>
+                  </Link>
+                </div>
                 <button
                   type="submit"
                   className="btn btn-submit bg-black text-white px-5 py-1 mb-5"
