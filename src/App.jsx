@@ -22,21 +22,20 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-         
-            <Route path="/registationform" element={<RegistrationForm />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/checkLength" element={<CheckLength />} />
-            <Route path="/application/list" element={<List />} />
-            <Route path="/application/new" element={<New />} />
-            <Route path="/myProfile" element={<MyProfile />} />
-            <Route path="/updateProfile" element={<UpdateProfile />} />
-            <Route path="/changePassword" element={<ChangePassword />} />
-            <Route path="/errorList" element={<ErrorList />} />
-            <Route path="/allContent" element={<AllContent />} />
-            <Route path="/batchContent" element={<BatchContent />} />
-            <Route path="/newContent" element={<NewContent />} />
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
+          <Route path="/registationform" element={<RegistrationForm />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/checkLength" element={<CheckLength />} />
+          <Route path="/application/list" element={<List />} />
+          <Route path="/application/new" element={<New />} />
+          <Route path="/myProfile/:userId" element={<MyProfile />} />
+          <Route path="/updateProfile/:userId" element={<UpdateProfile />} />
+          <Route path="/changePassword/:userId" element={<ChangePassword />} />
+          <Route path="/errorList" element={<ErrorList />} />
+          <Route path="/allContent" element={<AllContent />} />
+          <Route path="/batchContent" element={<BatchContent />} />
+          <Route path="/newContent" element={<NewContent />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

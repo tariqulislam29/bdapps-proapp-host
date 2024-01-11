@@ -6,12 +6,12 @@ const List = () => {
        <>
        <Navbar></Navbar>
         <div>
-            <div class="row gx-2">
-                <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+            <div className="row gx-2">
+                <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
 
-                <div class="col-12 col-sm-12 col-lg-6 col-md-6">
-                    <div class="py-3 w-100">
-                        <table class="table w-100 border rounded-3">
+                <div className="col-12 col-sm-12 col-lg-6 col-md-6">
+                    <div className="py-3 w-100">
+                        <table className="table w-100 border rounded-3">
                             <thead>
                                 <tr>
                                     <td
@@ -24,7 +24,7 @@ const List = () => {
                                                 App List
                                             </h6>
                                             <div>
-                                                <button type="submit" class="btn border text-white  ">
+                                                <button type="submit" className="btn border text-white  ">
                                                     Create a new Content
                                                 </button>
                                             </div>
@@ -53,7 +53,7 @@ const List = () => {
 
 
                 </div>
-                <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+                <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
             </div>
         </div></>
     );

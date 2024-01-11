@@ -6,10 +6,10 @@ const AllContent = () => {
      <>
     <Navbar></Navbar>
      <div className="px-3">
-        <div class="row gx-2">
-          <div class="col-12 col-sm-12 col-lg-12 col-md-12">
-            <div class="py-3 w-100">
-              <table class="table w-100 border rounded-3">
+        <div className="row gx-2">
+          <div className="col-12 col-sm-12 col-lg-12 col-md-12">
+            <div className="py-3 w-100">
+              <table className="table w-100 border rounded-3">
                 <thead>
                   <tr>
                     <td
@@ -22,7 +22,7 @@ const AllContent = () => {
                           Content List
                         </h6>
                         <div>
-                          <button type="submit" class="btn border text-white  ">
+                          <button type="submit" className="btn border text-white  ">
                             Create a new Content
                           </button>
                         </div>
@@ -32,42 +32,42 @@ const AllContent = () => {
                   <tr>
                     <td colSpan={12}>
                       <div className="row">
-                        <div class="col-sm-12 col-12 col-lg-3 col-md-3 mb-3 row">
+                        <div className="col-sm-12 col-12 col-lg-3 col-md-3 mb-3 row">
                           <label
                             for="Start"
-                            class="col-sm-4 text-end col-form-label"
+                            className="col-sm-4 text-end col-form-label"
                           >
                             Start:
                           </label>
-                          <div class="col-sm-8">
+                          <div className="col-sm-8">
                             <input
                               type="date"
-                              class="form-control"
+                              className="form-control"
                               id="Start"
                             />
                           </div>
                         </div>
-                        <div class=" col-sm-12 col-12 col-lg-3 col-md-3 mb-3 row">
+                        <div className=" col-sm-12 col-12 col-lg-3 col-md-3 mb-3 row">
                           <label
                             for="Start"
-                            class="col-sm-4 text-end col-form-label"
+                            className="col-sm-4 text-end col-form-label"
                           >
                             End:
                           </label>
-                          <div class="col-sm-8">
-                            <input type="date" class="form-control" id="End" />
+                          <div className="col-sm-8">
+                            <input type="date" className="form-control" id="End" />
                           </div>
                         </div>
-                        <div class="col-sm-12 col-12 col-lg-3 col-md-3 mb-3 row">
+                        <div className="col-sm-12 col-12 col-lg-3 col-md-3 mb-3 row">
                           <label
                             for="appId"
-                            class="col-sm-4 text-end col-form-label"
+                            className="col-sm-4 text-end col-form-label"
                           >
                             App ID:
                           </label>
-                          <div class="col-sm-8">
+                          <div className="col-sm-8">
                             <select
-                              class="form-control"
+                              className="form-control"
                               id="appId"
                               name="appId"
                             >
@@ -80,7 +80,7 @@ const AllContent = () => {
                           {" "}
                           <button
                             type="submit"
-                            class="btn text-white "
+                            className="btn text-white "
                             style={{ background: "green" }}
                           >
                             Search

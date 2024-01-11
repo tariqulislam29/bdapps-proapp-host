@@ -6,10 +6,10 @@ const ErrorList = () => {
      <>
      <Navbar></Navbar>
       <div className="px-3">
-        <div class="row gx-2">
-          <div class="col-12 col-sm-12 col-lg-12 col-md-12">
-            <div class="py-3 w-100">
-              <table class="table w-100 border rounded-3">
+        <div className="row gx-2">
+          <div className="col-12 col-sm-12 col-lg-12 col-md-12">
+            <div className="py-3 w-100">
+              <table className="table w-100 border rounded-3">
                 <thead>
                   <tr>
                     <td

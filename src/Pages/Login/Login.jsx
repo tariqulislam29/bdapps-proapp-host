@@ -1,7 +1,8 @@
 import axios from "axios";
+
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../Api/baseApi";
 import "./Login.css";
 const Login = () => {
@@ -11,8 +12,12 @@ const Login = () => {
      watch,
      formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
+
+
     const onSubmit = (data) => {
-    console.log(data);
+   
         axios({
           method: "post",
           url: `${api}/loginCheck`,
@@ -22,8 +27,21 @@ const Login = () => {
           credentials: "include",
           data,
         }).then((res) => {
-         
-          document.cookie = `data = ${res.data.data.token} ; max-age=3600; path=/`;
+          console.log(res.data.error);
+          if (res.data.error) {
+            alert(res.data.message);
+          }
+          else {
+            if (res.data?.data?.isMatchedPass) {
+              document.cookie = `data = ${res.data.data.token} ; max-age=3600; path=/`;
+              navigate("/home");
+            }
+            else {
+              alert("Email and password doesn't match");
+            }
+           
+          }
+           
          
          
           if (res) {
@@ -32,7 +50,7 @@ const Login = () => {
         });
      
   };
-  console.log("document.cookie:", document.cookie);
+  
   return (
     <>
       <div className="container text-center " style={{ height: "97vh" }}>

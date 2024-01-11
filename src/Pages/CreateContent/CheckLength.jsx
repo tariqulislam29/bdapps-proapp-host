@@ -8,12 +8,12 @@ const CheckLength = () => {
    <>
    <Navbar></Navbar>
     <div>
-      <div class="row gx-2">
-        <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+      <div className="row gx-2">
+        <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
 
-        <div class="col-12 col-sm-12 col-lg-6 col-md-6">
-          <div class="py-3 w-100">
-            <table class="table w-100 border rounded-3">
+        <div className="col-12 col-sm-12 col-lg-6 col-md-6">
+          <div className="py-3 w-100">
+            <table className="table w-100 border rounded-3">
               <thead>
                 <tr>
                   <td
@@ -26,7 +26,7 @@ const CheckLength = () => {
                         Check Content Length
                       </h6>
                       <div>
-                        <button type="submit" class="btn border text-white  ">
+                        <button type="submit" className="btn border text-white  ">
                           Create a new Content
                         </button>
                       </div>
@@ -37,12 +37,12 @@ const CheckLength = () => {
               <tbody style={{ fontSize: "10px" }}>
                 <tr>
                   <td>
-                    <div class="container py-5">
+                    <div className="container py-5">
                       <h6 style={{ fontSize: "14px" }}>
                         Write or Paste Some Text:
                       </h6>
                       <textarea
-                        class="form-control"
+                        className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="5"
                         onChange={(e) => setCount(e.target.value)}
@@ -89,7 +89,7 @@ const CheckLength = () => {
             </p>
           </div>
         </div>
-        <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+        <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
       </div>
     </div></>
   );

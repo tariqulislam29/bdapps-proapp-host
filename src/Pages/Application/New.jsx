@@ -6,12 +6,12 @@ const New = () => {
    <>
    <Navbar></Navbar>
     <div>
-      <div class="row gx-2">
-        <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+      <div className="row gx-2">
+        <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
 
-        <div class="col-12 col-sm-12 col-lg-6 col-md-6">
-          <div class="py-3 w-100">
-            <table class="table w-100 border rounded-3">
+        <div className="col-12 col-sm-12 col-lg-6 col-md-6">
+          <div className="py-3 w-100">
+            <table className="table w-100 border rounded-3">
               <thead>
                 <tr>
                   <td
@@ -24,7 +24,7 @@ const New = () => {
                         Create a New App
                       </h6>
                       <div>
-                        <button type="submit" class="btn border text-white  ">
+                        <button type="submit" className="btn border text-white  ">
                           App List
                         </button>
                       </div>
@@ -38,57 +38,57 @@ const New = () => {
                  <td >
                  <form>
                     {" "}
-                    <div class="form-group mb-3">
+                    <div className="form-group mb-3">
                       {" "}
                       <label className="mb-1 fw-bold " for="appId">App Id:</label>{" "}
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="appId"
                      
                       />{" "}
                     </div>{" "}
-                    <div class="form-group mb-3">
+                    <div className="form-group mb-3">
                       {" "}
                       <label className="mb-1 fw-bold " for="appPassword">App Password:</label>{" "}
                       <input
                         type="password"
-                        class="form-control"
+                        className="form-control"
                         id="appPassword"
                        
                       />{" "}
                     </div>{" "}
-                    <div class="form-group mb-3">
+                    <div className="form-group mb-3">
                       {" "}
                       <label className="mb-1 fw-bold " for="smsKeyword">SMS Keyword:</label>{" "}
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="smsKeyword"
                        
                       />{" "}
                     </div>{" "}
-                    <div class="form-group mb-3">
+                    <div className="form-group mb-3">
                       {" "}
                       <label className="mb-1 fw-bold " for="ussdKeyword">USSD Keyword:</label>{" "}
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="ussdKeyword"
                        
                       />{" "}
                     </div>{" "}
-                    <div class="form-group mb-3">
+                    <div className="form-group mb-3">
                       {" "}
                       <label className="mb-1 fw-bold " for="deliveryTime">Delivery Time:</label>{" "}
                       <input
                         type="date"
-                        class="form-control"
+                        className="form-control"
                         id="deliveryTime"
                        
                       />{" "}
                     </div>{" "}
-                    <button type="submit" class="btn  w-100 text-white" style={{ background: "green"}}>
+                    <button type="submit" className="btn  w-100 text-white" style={{ background: "green"}}>
                       Submit
                     </button>{" "}
                   </form>
@@ -98,7 +98,7 @@ const New = () => {
             </table>
           </div>
         </div>
-        <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+        <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
       </div>
     </div></>
   );

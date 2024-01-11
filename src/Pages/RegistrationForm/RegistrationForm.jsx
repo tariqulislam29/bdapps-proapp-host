@@ -114,8 +114,8 @@ const RegistrationForm = () => {
                           name="gender"
                           {...register("gender")}
                         >
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
                         </select>
                       </div>
                       <div className="form-group mb-3">
@@ -143,7 +143,8 @@ const RegistrationForm = () => {
                           name="division"
                           {...register("division")}
                         >
-                          <option value="dhaka">Dhaka</option>
+                        
+                          <option value="Dhaka">Dhaka</option>
                           <option value="Barishal">Barishal</option>
                           <option value="Chattogram">Chattogram</option>
                           <option value="Khulna">Khulna</option>

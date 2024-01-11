@@ -28,10 +28,10 @@ const NewContent = () => {
      <>
      <Navbar></Navbar>
       <div className='px-1'>
-        <div class="row gx-2">
-          <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+        <div className="row gx-2">
+          <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
 
-          <div class="col-12 col-sm-12 col-lg-6 col-md-6">
+          <div className="col-12 col-sm-12 col-lg-6 col-md-6">
             <div className="pt-2">
              
                 <span className="fw-normal text-start" style={{ fontSize: "12px" }}>
@@ -40,8 +40,8 @@ const NewContent = () => {
                 </span>
             
             </div>
-            <div class=" w-100 py-2">
-              <table class="table w-100 border rounded-3">
+            <div className=" w-100 py-2">
+              <table className="table w-100 border rounded-3">
                 <thead>
                   <tr>
                     <td
@@ -54,7 +54,7 @@ const NewContent = () => {
                           Create a New Content
                         </h6>
                         <div>
-                          <button type="submit" class="btn border text-white  ">
+                          <button type="submit" className="btn border text-white  ">
                             All Content
                           </button>
                         </div>
@@ -154,7 +154,7 @@ const NewContent = () => {
               </table>
             </div>
           </div>
-          <div class="col-1 col-sm-1 col-lg-3 col-md-3"></div>
+          <div className="col-1 col-sm-1 col-lg-3 col-md-3"></div>
         </div>
       </div></>
     );

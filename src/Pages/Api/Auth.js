@@ -1,14 +1,11 @@
-import React from 'react';
-
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 const Auth = () => {
-    const info = ()=>{
+   const token = Cookies.get("data");
+    const decoded = jwtDecode(token);
     
+    return decoded;
 
-
-        return data;
-}
-
-   
 };
 
 export default Auth;
