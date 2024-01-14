@@ -15,7 +15,7 @@ const ErrorList = () => {
                     <td
                       colSpan={12}
                       className="text-start text-white"
-                      style={{ background: "green", fontSize: "14px" }}
+                      style={{ background: "black", fontSize: "14px" }}
                     >
                       <div>
                         <h6 className="text-start  rounded-top  pt-2 ps-2">

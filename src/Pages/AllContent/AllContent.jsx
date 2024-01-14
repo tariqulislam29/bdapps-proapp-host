@@ -15,7 +15,7 @@ const AllContent = () => {
                     <td
                       colSpan={12}
                       className="text-start text-white"
-                      style={{ background: "green", fontSize: "14px" }}
+                      style={{ background: "black", fontSize: "14px" }}
                     >
                       <div className="d-flex  justify-content-between rounded-top">
                         <h6 className="text-start  rounded-top  pt-2 ps-2">
@@ -81,7 +81,7 @@ const AllContent = () => {
                           <button
                             type="submit"
                             className="btn text-white "
-                            style={{ background: "green" }}
+                            style={{ background: "black" }}
                           >
                             Search
                           </button>

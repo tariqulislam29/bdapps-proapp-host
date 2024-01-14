@@ -17,7 +17,7 @@ const MyProfile = () => {
          },
        })
          .then((response) => {
-          
+          console.log(response);
          // Handle the successful response
          setData(response.data.data[0]);
        })
@@ -26,7 +26,7 @@ const MyProfile = () => {
          alert(error.message);
        });
    }, [userId]);
-    // console.log(data);
+    console.log(data);
     const originalDateString = data?.dob;
 
     // Create a Date object from the original date string
@@ -61,7 +61,7 @@ const MyProfile = () => {
                         <td
                           colSpan={12}
                           className="text-start text-white"
-                          style={{ background: "green", fontSize: "14px" }}
+                          style={{ background: "black", fontSize: "14px" }}
                         >
                           <h6 className="text-start  rounded-top  pt-2 ps-2">
                             My Profile
@@ -143,7 +143,7 @@ const MyProfile = () => {
                             <button
                               type="submit"
                               className="btn border text-white"
-                              style={{ background: "green" }}
+                              style={{ background: "black" }}
                             >
                               Edit Your Profile
                             </button>{" "}

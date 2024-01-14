@@ -58,7 +58,7 @@ navigate("/login");
                       <td
                         colSpan={12}
                         className="text-start text-white"
-                        style={{ background: "green", fontSize: "14px" }}
+                        style={{ background: "black", fontSize: "14px" }}
                       >
                         <h6 className="text-start  rounded-top  pt-2 ps-2">
                           Change Password
@@ -118,7 +118,7 @@ navigate("/login");
                             <button
                               type="submit"
                               className="btn text-white w-100"
-                              style={{ background: "green" }}
+                              style={{ background: "black" }}
                             >
                               Submit
                             </button>

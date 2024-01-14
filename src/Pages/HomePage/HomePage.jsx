@@ -259,7 +259,7 @@ const HomePage = () => {
                           <th
                             colSpan={12}
                             className="text-start text-white"
-                            style={{ background: "green", fontSize: "14px" }}
+                            style={{ background: "black", fontSize: "14px" }}
                           >
                             Today's Content
                           </th>
@@ -300,7 +300,7 @@ const HomePage = () => {
                           <th
                             colSpan={12}
                             className="text-start text-white"
-                            style={{ background: "green", fontSize: "14px" }}
+                            style={{ background: "black", fontSize: "14px" }}
                           >
                             Tomorrows's Content
                           </th>

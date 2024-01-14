@@ -27,13 +27,13 @@ const Login = () => {
           credentials: "include",
           data,
         }).then((res) => {
-          console.log(res.data.error);
+          
           if (res.data.error) {
             alert(res.data.message);
           }
           else {
             if (res.data?.data?.isMatchedPass) {
-              document.cookie = `data = ${res.data.data.token} ; max-age=3600; path=/`;
+              document.cookie = `data = ${res.data.data.token} ; max-age=7200; path=/`;
               navigate("/home");
             }
             else {

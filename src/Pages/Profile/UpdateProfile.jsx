@@ -90,7 +90,7 @@ const formattedDateString = `${year}-${month}-${day}`;
                       <td
                         colSpan={12}
                         className="text-start text-white"
-                        style={{ background: "green", fontSize: "14px" }}
+                        style={{ background: "black", fontSize: "14px" }}
                       >
                         <h6 className="text-start  rounded-top  pt-2 ps-2">
                           Update My Profile
@@ -229,7 +229,7 @@ const formattedDateString = `${year}-${month}-${day}`;
                             <button
                               type="submit"
                               className="btn text-white w-100"
-                              style={{ background: "green" }}
+                              style={{ background: "black" }}
                             >
                               Submit
                             </button>
