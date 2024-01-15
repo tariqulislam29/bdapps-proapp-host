@@ -1,10 +1,52 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Auth from "../Api/Auth";
+import { api } from "../Api/baseApi";
 import Navbar from "../Navbar/Navbar";
 
 const HomePage = () => {
    const data = Auth();
-   console.log(data);
+  console.log(data);
+  const [subKeywordOptions, setSubKeywordOptions] = useState([]);
+  console.log(subKeywordOptions);
+  useEffect(() => {
+    // Make a GET request using Axios
+    axios
+      .get(`${api}/getnewapp`, {
+        headers: {
+          id: data.id,
+        },
+      })
+      .then((response) => {
+        // Handle the successful response
+        // console.log(response.data.data);
+        setSubKeywordOptions(response.data.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        alert(error.message);
+      });
+  }, []);
+  const [contentData, setContentData] = useState([]);
+  console.log(contentData);
+  useEffect(() => {
+    // Make a GET request using Axios
+    axios
+      .get(`${api}/getallcontenthome`, {
+        headers: {
+          reg_id: data.id,
+        },
+      })
+      .then((response) => {
+        // Handle the successful response
+        // console.log(response.data.data);
+        setContentData(response.data.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        alert(error.message);
+      });
+  }, []);
   return (
     <>
       {!data ? (
@@ -54,7 +96,9 @@ const HomePage = () => {
                                 className="badge bg-white text-primary rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                1
+                                {contentData?.todayStatus?.Pending +
+                                  contentData?.todayStatus?.Failed +
+                                  contentData?.todayStatus?.Sent}
                               </span>
                             </button>
                             <button
@@ -62,12 +106,12 @@ const HomePage = () => {
                               className="btn btn-success bg-success text-white my-2 mx-1"
                               style={{ fontSize: "12px" }}
                             >
-                              Send
+                              Sent
                               <span
                                 className="badge bg-white text-success rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                2
+                                {contentData?.todayStatus?.Sent}
                               </span>
                             </button>
                             <button
@@ -80,7 +124,7 @@ const HomePage = () => {
                                 className="badge bg-white text-warning rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                3
+                                {contentData?.todayStatus?.Pending}
                               </span>
                             </button>
                             <button
@@ -93,7 +137,7 @@ const HomePage = () => {
                                 className="badge bg-white text-danger rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                3
+                                {contentData?.todayStatus?.Failed}
                               </span>
                             </button>
                           </tr>
@@ -132,7 +176,9 @@ const HomePage = () => {
                                 className="badge bg-white text-primary rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                1
+                                {contentData?.yesterdayStatus?.Pending +
+                                  contentData?.yesterdayStatus?.Failed +
+                                  contentData?.yesterdayStatus?.Sent}
                               </span>
                             </button>
                             <button
@@ -140,12 +186,12 @@ const HomePage = () => {
                               className="btn btn-success bg-success text-white my-2 mx-1"
                               style={{ fontSize: "12px" }}
                             >
-                              Send
+                              Sent
                               <span
                                 className="badge bg-white text-success rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                2
+                                {contentData?.yesterdayStatus?.Sent}
                               </span>
                             </button>
                             <button
@@ -158,7 +204,7 @@ const HomePage = () => {
                                 className="badge bg-white text-warning rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                3
+                                {contentData?.yesterdayStatus?.Pending}
                               </span>
                             </button>
                             <button
@@ -171,7 +217,7 @@ const HomePage = () => {
                                 className="badge bg-white text-danger rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                3
+                                {contentData?.yesterdayStatus?.Failed}
                               </span>
                             </button>
                           </tr>
@@ -210,48 +256,16 @@ const HomePage = () => {
                                 className="badge bg-white text-primary rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                1
+                                {contentData?.tomorrowStatus}
                               </span>
                             </button>
                           </tr>
                         </tbody>
                       </table>
                     </div>
-                    <div className="py-2 w-100">
-                      <table className="table w-100 border rounded-3">
-                        <thead>
-                          <tr>
-                            <th
-                              colSpan={12}
-                              className="text-start text-success"
-                              style={{
-                                background: "#dff0d8",
-                                fontWeight: "normal",
-                                fontSize: "14px",
-                                color: "green",
-                              }}
-                            >
-                              Keyword & Time
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody style={{ fontSize: "10px" }}>
-                          <tr>
-                            <th>#</th>
-                            <th>App ID</th>
-                            <th>Time</th>
-                          </tr>
-                          <tr>
-                            <th>1</th>
-                            <td>1234</td>
-                            <td>10:30</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
                   </div>
                 </div>
-                <div className="col-12 col-sm-12 col-lg-9 col-md-9">
+                <div className="col-12 col-sm-12 col-lg-7 col-md-7">
                   <div className="py-3 w-100">
                     <table className="table w-100 border rounded-3">
                       <thead>
@@ -265,31 +279,26 @@ const HomePage = () => {
                           </th>
                         </tr>
                       </thead>
-                      <tbody style={{ fontSize: "10px" }}>
+                      <tbody style={{ fontSize: "14px" }}>
                         <tr>
-                          <th>App ID</th>
-                          <th>Content</th>
-                          <th>Length</th>
-                          <th>Status</th>
-                          <th>Edit</th>
-                          <th>Delete</th>
+                          <th style={{ width: "10%" }}>App ID</th>
+                          <th style={{ width: "55%" }}>Content</th>
+                          <th style={{ width: "10%" }}>Length</th>
+                          <th style={{ width: "10%" }}>Status</th>
+                          <th style={{ width: "10%" }}>Edit</th>
+                          <th style={{ width: "5%" }}>Delete</th>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
+                        {contentData?.today &&
+                          contentData?.today.map((item, index) => (
+                            <tr key={index}>
+                              <td>{item.app_id}</td>
+                              <td className="text-start">{item.content}</td>
+                              <td>{item.content.length}</td>
+                              <td>{item.status}</td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          ))}
                       </tbody>
                     </table>
                   </div>
@@ -306,31 +315,26 @@ const HomePage = () => {
                           </th>
                         </tr>
                       </thead>
-                      <tbody style={{ fontSize: "10px" }}>
+                      <tbody style={{ fontSize: "14px" }}>
                         <tr>
-                          <th>App ID</th>
-                          <th>Content</th>
-                          <th>Length</th>
-                          <th>Status</th>
-                          <th>Edit</th>
-                          <th>Delete</th>
+                          <th style={{ width: "10%" }}>App ID</th>
+                          <th style={{ width: "55%" }}>Content</th>
+                          <th style={{ width: "10%" }}>Length</th>
+                          <th style={{ width: "10%" }}>Status</th>
+                          <th style={{ width: "10%" }}>Edit</th>
+                          <th style={{ width: "5%" }}>Delete</th>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
+                        {contentData?.tomorrow &&
+                          contentData?.tomorrow.map((item, index) => (
+                            <tr key={index}>
+                              <td>{item.app_id}</td>
+                              <td className="text-start">{item.content}</td>
+                              <td>{item.content.length}</td>
+                              <td>{item.status}</td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          ))}
                       </tbody>
                     </table>
                   </div>
@@ -340,6 +344,43 @@ const HomePage = () => {
                       content is <span className="fw-bold">300 </span>
                       characters.
                     </p>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-12 col-lg-2 col-md-2">
+                  <div className="py-3 w-100">
+                    <table className="table w-100 border rounded-3">
+                      <thead>
+                        <tr>
+                          <th
+                            colSpan={12}
+                            className="text-start text-success"
+                            style={{
+                              background: "#dff0d8",
+                              fontWeight: "normal",
+                              fontSize: "14px",
+                              color: "green",
+                            }}
+                          >
+                            Keyword & Time
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody style={{ fontSize: "14px" }}>
+                        <tr>
+                          <th>#</th>
+                          <th>App ID</th>
+                          <th>Time</th>
+                        </tr>
+                        {subKeywordOptions &&
+                          subKeywordOptions.map((item, index) => (
+                            <tr>
+                              <th>{++index}</th>
+                              <td className="text-start">{item.app_id}</td>
+                              <td>{item.delivery_time}</td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>

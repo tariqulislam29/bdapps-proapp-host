@@ -16,8 +16,8 @@ import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
 
 function App() {
  
-  var staus = true;
- 
+    
+
   return (
     <>
       <BrowserRouter>

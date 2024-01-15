@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Auth from '../Api/Auth';
 import { api } from '../Api/baseApi';
 import Navbar from '../Navbar/Navbar';
@@ -186,12 +187,14 @@ axios
                             Create a New Content
                           </h6>
                           <div>
-                            <button
-                              type="submit"
-                              className="btn border text-white  "
-                            >
-                              All Content
-                            </button>
+                            <Link to={"/allContent"}>
+                              <button
+                                type="submit"
+                                className="btn border text-white  "
+                              >
+                                All Content
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </td>

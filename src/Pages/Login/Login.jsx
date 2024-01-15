@@ -1,5 +1,5 @@
+import { Controls, Player } from "@lottiefiles/react-lottie-player";
 import axios from "axios";
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -55,8 +55,21 @@ const Login = () => {
     <>
       <div className="container text-center " style={{ height: "97vh" }}>
         <div className="row pt-5">
-          <div className="col-sm-12 col-12 col-lg-4 col-md-3"></div>
-          <div className="col-sm-12 col-12 col-lg-5 col-md-6 pt-5">
+          <div className="col-sm-12 col-12 col-lg-6 col-md-6 pt-5">
+            <Player
+              autoplay
+              loop
+              
+              src="animation.json"
+              style={{ height: "300px", width: "300px" }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          </div>
+          <div className="col-sm-12 col-12 col-lg-6 col-md-6 pt-5">
             <div className=" border rounded-3">
               <h5 className="text-start bg-black rounded-top text-white py-2 ps-2">
                 Login
@@ -113,7 +126,7 @@ const Login = () => {
               </form>
             </div>
           </div>
-          <div className="col-sm-12 col-12 col-lg-4 col-md-3"></div>
+          {/* <div className="col-sm-12 col-12 col-lg-4 col-md-3"></div> */}
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../Api/Auth';
 import { api } from '../Api/baseApi';
 import Navbar from '../Navbar/Navbar';
@@ -7,8 +8,27 @@ import Navbar from '../Navbar/Navbar';
 const BatchContent = () => {
   const [file, setFile] = useState(null);
    const [fileName, setFileName] = useState("No file chosen");
-const authData = Auth();
-
+  const authData = Auth();
+  const [appId, setAppId] = useState();
+ const [subKeywordOptions, setSubKeywordOptions] = useState([]);
+ useEffect(() => {
+   // Make a GET request using Axios
+   axios
+     .get(`${api}/getnewapp`, {
+       headers: {
+         id: authData.id,
+       },
+     })
+     .then((response) => {
+       // Handle the successful response
+       // console.log(response.data.data);
+       setSubKeywordOptions(response.data.data);
+     })
+     .catch((error) => {
+       // Handle errors
+       alert(error.message);
+     });
+ }, []);
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
 
@@ -20,7 +40,7 @@ const authData = Auth();
       setFileName("No file chosen");
     }
   };
-
+ const navigate = useNavigate();
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", file);
@@ -30,11 +50,18 @@ const authData = Auth();
         headers: {
           "Content-Type": "multipart/form-data",
           reg_id: authData.id,
+          id: parseInt(appId),
         },
-      });
-      alert("Successfully Update Content");
-      setFile(null);
-      setFileName("No file chosen");
+      }).then(res => {
+        console.log(res);
+        if (res) {
+          alert("Successfully Update Content");
+          setFile(null);
+          navigate("/allContent");
+          setFileName("No file chosen");
+        }
+      })
+     
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -61,12 +88,14 @@ const authData = Auth();
                             Batch Upload
                           </h6>
                           <div>
-                            <button
-                              type="submit"
-                              className="btn border text-white  "
-                            >
-                              All Content
-                            </button>
+                            <Link to={"/allContent"}>
+                              <button
+                                type="submit"
+                                className="btn border text-white  "
+                              >
+                                All Content
+                              </button>
+                            </Link>
                           </div>
                         </div>
                       </td>
@@ -75,7 +104,34 @@ const authData = Auth();
                   <tbody style={{ fontSize: "10px" }}>
                     <tr>
                       <td>
-                        <div className="container py-5">
+                        {" "}
+                        <div className="mb-3 ">
+                          <div>
+                            <div>
+                              <label
+                                className="fw-bold  ms-2 mb-1"
+                                style={{ fontSize: "14px" }}
+                              >
+                                APP ID
+                              </label>
+                            </div>
+
+                            <select
+                              className="w-100 form-select bg-black text-white"
+                              onChange={(e) => setAppId(e.target.value)}
+                              required
+                            >
+                              <option>select app id</option>
+                              {/* Map your options here */}
+                              {subKeywordOptions.map((option) => (
+                                <option key={option.id} value={option.id}>
+                                  {option.app_id}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+                        <div className="container pb-5">
                           <h6 style={{ fontSize: "14px" }}>
                             Upload Excel File:
                           </h6>

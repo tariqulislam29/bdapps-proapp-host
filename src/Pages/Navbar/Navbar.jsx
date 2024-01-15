@@ -11,7 +11,7 @@ const Navbar = () => {
         <nav
           className="navbar navbar-expand-lg bg-body-tertiary bg-dark"
           data-bs-theme="dark"
-          style={{ fontSize: "12px" }}
+          style={{ fontSize: "13px" }}
         >
           <div className="container-fluid">
             <button
