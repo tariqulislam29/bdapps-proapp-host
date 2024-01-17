@@ -1,10 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../Api/Auth';
 
 const Navbar = () => {
   const data = Auth();
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+     const confirmed = window.confirm(
+       "Are you sure you want to Log Out?"
+     );
 
+     if (confirmed) {
+       const removeCookie = (data) => {
+   document.cookie = `${data}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  window.location.href = "/login";
+ };
+ // Example usage
+   removeCookie("data");
+      
+     } else {
+      
+       console.log("Canceled.");
+     }  
+  }
     return (
       <div>
         {/* menu section start */}
@@ -134,11 +152,11 @@ const Navbar = () => {
                   </li>
                 </ul>
                 <li className="navbar-nav  me-2">
-                  <Link to="/login" className="pt-2">
-                    <button className="rounded-pill bg-danger px-2">
+                 
+                    <button onClick={e=>handleLogOut()} className="rounded-pill bg-danger px-2">
                       Log Out
                     </button>
-                  </Link>
+                 
                 </li>
               </div>
             </div>

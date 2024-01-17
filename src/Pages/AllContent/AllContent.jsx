@@ -167,9 +167,7 @@ useEffect(() => {
    } else {
      // User clicked "Cancel" or closed the dialog
      console.log("Canceled.");
-   }
-   
-     
+   }  
   }
   
     return (
@@ -311,6 +309,8 @@ useEffect(() => {
                           paddingTop: "10px",
                           paddingBottom: "10px",
                           width: "30%",
+
+                          
                         }}
                       >
                         Content
@@ -378,7 +378,10 @@ useEffect(() => {
                           <td className="align-middle text-center ">
                             {item.app_id}
                           </td>
-                          <td className="align-middle">
+                          <td
+                            className="align-middle"
+                            style={{ wordWrap: "break-word" }}
+                          >
                             {item.content}
                           </td>
                           <td className="align-middle text-center">

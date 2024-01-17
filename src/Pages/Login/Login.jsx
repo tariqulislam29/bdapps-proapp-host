@@ -33,8 +33,9 @@ const Login = () => {
           }
           else {
             if (res.data?.data?.isMatchedPass) {
+              
               document.cookie = `data = ${res.data.data.token} ; max-age=7200; path=/`;
-              navigate("/home");
+            window.location.href = "/home";
             }
             else {
               alert("Email and password doesn't match");

@@ -32,12 +32,12 @@ const ErrorList = () => {
                   </tr>
                 </thead>
                 <tbody style={{ fontSize: "12px" }}>
-                  <tr>
+                  {/* <tr>
                     <td>1</td>
                     <td>APP_018387</td>
                     <td>voc99</td>
                     <td>935</td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>

@@ -69,7 +69,7 @@ const MyProfile = () => {
                         </td>
                       </tr>
                     </thead>
-                    <tbody style={{ fontSize: "12px" }}>
+                    <tbody style={{ fontSize: "14px" }}>
                       <tr>
                         <td style={{ width: "40%" }} className="fw-bold">
                           Name:

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import Auth from "../Api/Auth";
 import { api } from "../Api/baseApi";
 import Navbar from "../Navbar/Navbar";
@@ -47,6 +48,77 @@ const HomePage = () => {
         alert(error.message);
       });
   }, []);
+
+
+ const [formContent, setFormContent] = useState();
+ const [singleData, setSingleData] = useState({});
+ const {
+   register: register1,
+   reset: reset1,
+   formState: { errors: errors1 },
+   handleSubmit: handleSubmit1,
+  } = useForm();
+
+const onSubmitUpdate = (data) => {
+  if (formContent) {
+    data.content = formContent;
+    data.id = singleData.id;
+    axios({
+      method: "put",
+      url: `${api}/updateContent`,
+      data,
+    }).then((res) => {
+      if (res) {
+        if (res.data.error) {
+          alert(res.data.message);
+        }
+        if (res.data.data.affectedRows == 1) {
+          // alert("Successfully Updated Content");
+          setFormContent("");
+        
+          window.location.reload();
+        }
+      }
+    });
+  } else {
+    alert("Change Content Please");
+  }
+};
+
+
+    const handleDeleteData = (item) => {
+      const confirmed = window.confirm(
+        "Are you sure you want to Delete this content"
+      );
+
+      // Check the user's response
+      if (confirmed) {
+        // User clicked "OK"
+        // Perform the action you want to take
+        axios
+          .delete(`${api}/deleteContent`, {
+            headers: {
+              id: item.id,
+            },
+          })
+          .then((response) => {
+            // Handle the successful response
+            if (response.data.data.affectedRows == 1) {
+             
+                window.location.reload();
+              // const newData = data.filter((data1) => data1.id !== item.id);
+              // setData(newData);
+            }
+          })
+          .catch((error) => {
+            // Handle errors
+            alert(error.message);
+          });
+      } else {
+        // User clicked "Cancel" or closed the dialog
+        console.log("Canceled.");
+      }
+    };
   return (
     <>
       {!data ? (
@@ -96,9 +168,21 @@ const HomePage = () => {
                                 className="badge bg-white text-primary rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.todayStatus?.Pending +
-                                  contentData?.todayStatus?.Failed +
-                                  contentData?.todayStatus?.Sent}
+                                {(contentData?.todayStatus?.hasOwnProperty(
+                                  "Pending"
+                                )
+                                  ? parseInt(contentData?.todayStatus?.Pending)
+                                  : 0) +
+                                  (contentData?.todayStatus?.hasOwnProperty(
+                                    "Failed"
+                                  )
+                                    ? parseInt(contentData?.todayStatus?.Failed)
+                                    : 0) +
+                                  (contentData?.todayStatus?.hasOwnProperty(
+                                    "Sent"
+                                  )
+                                    ? parseInt(contentData?.todayStatus?.Sent)
+                                    : 0)}
                               </span>
                             </button>
                             <button
@@ -111,7 +195,9 @@ const HomePage = () => {
                                 className="badge bg-white text-success rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.todayStatus?.Sent}
+                                {contentData?.todayStatus?.Sent
+                                  ? contentData?.todayStatus?.Sent
+                                  : 0}
                               </span>
                             </button>
                             <button
@@ -124,7 +210,9 @@ const HomePage = () => {
                                 className="badge bg-white text-warning rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.todayStatus?.Pending}
+                                {contentData?.todayStatus?.Pending
+                                  ? contentData?.todayStatus?.Pending
+                                  : 0}
                               </span>
                             </button>
                             <button
@@ -137,7 +225,9 @@ const HomePage = () => {
                                 className="badge bg-white text-danger rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.todayStatus?.Failed}
+                                {contentData?.todayStatus?.Failed
+                                  ? contentData?.todayStatus?.Failed
+                                  : 0}
                               </span>
                             </button>
                           </tr>
@@ -176,9 +266,27 @@ const HomePage = () => {
                                 className="badge bg-white text-primary rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.yesterdayStatus?.Pending +
-                                  contentData?.yesterdayStatus?.Failed +
-                                  contentData?.yesterdayStatus?.Sent}
+                                {(contentData?.yesterdayStatus?.hasOwnProperty(
+                                  "Pending"
+                                )
+                                  ? parseInt(
+                                      contentData?.yesterdayStatus?.Pending
+                                    )
+                                  : 0) +
+                                  (contentData?.yesterdayStatus?.hasOwnProperty(
+                                    "Failed"
+                                  )
+                                    ? parseInt(
+                                        contentData?.yesterdayStatus?.Failed
+                                      )
+                                    : 0) +
+                                  (contentData?.yesterdayStatus?.hasOwnProperty(
+                                    "Sent"
+                                  )
+                                    ? parseInt(
+                                        contentData?.yesterdayStatus?.Sent
+                                      )
+                                    : 0)}
                               </span>
                             </button>
                             <button
@@ -191,7 +299,9 @@ const HomePage = () => {
                                 className="badge bg-white text-success rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.yesterdayStatus?.Sent}
+                                {contentData?.yesterdayStatus?.Sent
+                                  ? contentData?.yesterdayStatus?.Sent
+                                  : 0}
                               </span>
                             </button>
                             <button
@@ -204,7 +314,9 @@ const HomePage = () => {
                                 className="badge bg-white text-warning rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.yesterdayStatus?.Pending}
+                                {contentData?.yesterdayStatus?.Pending
+                                  ? contentData?.yesterdayStatus?.Pending
+                                  : 0}
                               </span>
                             </button>
                             <button
@@ -217,7 +329,11 @@ const HomePage = () => {
                                 className="badge bg-white text-danger rounded-circle ms-1 "
                                 style={{ fontSize: "12px" }}
                               >
-                                {contentData?.yesterdayStatus?.Failed}
+                                {contentData?.yesterdayStatus?.Failed
+                                  ? contentData?.yesterdayStatus?.Failed
+                                  : 0}
+
+                       
                               </span>
                             </button>
                           </tr>
@@ -294,9 +410,52 @@ const HomePage = () => {
                               <td>{item.app_id}</td>
                               <td className="text-start">{item.content}</td>
                               <td>{item.content.length}</td>
-                              <td>{item.status}</td>
-                              <td></td>
-                              <td></td>
+                              <td>
+                                {" "}
+                                {item.status === "Pending" ? (
+                                  <span class="badge text-bg-warning text-white p-2">
+                                    {item.status}
+                                  </span>
+                                ) : item.status === "Sent" ? (
+                                  <span class="badge text-bg-success p-2">
+                                    {" "}
+                                    {item.status}
+                                  </span>
+                                ) : (
+                                  <span class="badge text-bg-danger p-2">
+                                    {" "}
+                                    {item.status}
+                                  </span>
+                                )}
+                              </td>
+                              <td>
+                                {" "}
+                                {item.status === "Pending" ? (
+                                  <i
+                                    class="fa fa-pen-nib bg-primary p-2 text-white rounded-pill"
+                                    data-bs-toggle="modal"
+                                    onClick={(e) => setSingleData(item)}
+                                    data-bs-target="#updateContent"
+                                    style={{ cursor: "pointer" }}
+                                  ></i>
+                                ) : (
+                                  <i class="fa fa-ban bg-black p-2 text-white rounded-pill"></i>
+                                )}
+                              </td>
+                              <td>
+                                {" "}
+                                {item.status === "Pending" ? (
+                                  <i
+                                    class="fa fa-trash bg-danger p-2 text-white rounded-pill "
+                                    onClick={(e) => {
+                                      handleDeleteData(item);
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  ></i>
+                                ) : (
+                                  <i class="fa fa-ban bg-black p-2 text-white rounded-pill"></i>
+                                )}
+                              </td>
                             </tr>
                           ))}
                       </tbody>
@@ -330,9 +489,50 @@ const HomePage = () => {
                               <td>{item.app_id}</td>
                               <td className="text-start">{item.content}</td>
                               <td>{item.content.length}</td>
-                              <td>{item.status}</td>
-                              <td></td>
-                              <td></td>
+                              <td>
+                                {" "}
+                                {item.status === "Pending" ? (
+                                  <span class="badge text-bg-warning text-white p-2">
+                                    {item.status}
+                                  </span>
+                                ) : item.status === "Sent" ? (
+                                  <span class="badge text-bg-success p-2">
+                                    {" "}
+                                    {item.status}
+                                  </span>
+                                ) : (
+                                  <span class="badge text-bg-danger p-2">
+                                    {" "}
+                                    {item.status}
+                                  </span>
+                                )}
+                              </td>
+                              <td>
+                                {item.status === "Pending" ? (
+                                  <i
+                                    class="fa fa-pen-nib bg-primary p-2 text-white rounded-pill"
+                                    data-bs-toggle="modal"
+                                    onClick={(e) => setSingleData(item)}
+                                    data-bs-target="#updateContent"
+                                    style={{ cursor: "pointer" }}
+                                  ></i>
+                                ) : (
+                                  <i class="fa fa-ban bg-black p-2 text-white rounded-pill"></i>
+                                )}
+                              </td>
+                              <td>
+                                {item.status === "Pending" ? (
+                                  <i
+                                    class="fa fa-trash bg-danger p-2 text-white rounded-pill "
+                                    onClick={(e) => {
+                                      handleDeleteData(item, "tomorrow");
+                                    }}
+                                    style={{ cursor: "pointer" }}
+                                  ></i>
+                                ) : (
+                                  <i class="fa fa-ban bg-black p-2 text-white rounded-pill"></i>
+                                )}
+                              </td>
                             </tr>
                           ))}
                       </tbody>
@@ -386,6 +586,97 @@ const HomePage = () => {
               </div>
             </div>
             {/* body section end  */}
+            <div
+              class="modal fade"
+              id="updateContent"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Update Content
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+
+                  <div class="modal-body">
+                    <form onSubmit={handleSubmit1(onSubmitUpdate)}>
+                      <div className="row">
+                        <div className="mb-3">
+                          <label
+                            className="fw-bold  mb-1"
+                            style={{ fontSize: "14px" }}
+                          >
+                            Content
+                          </label>
+                          <textarea
+                            className="w-100 form-control"
+                            rows={10}
+                            defaultValue={singleData.content}
+                            onChange={(e) => setFormContent(e.target.value)}
+                            required
+                          />
+                          {formContent?.length > 0 &&
+                            formContent?.length < 301 && (
+                              <p
+                                className="mt-3 py-2 px-2 fw-bold"
+                                style={{
+                                  fontSize: "14px",
+                                  background: "#dff0d8",
+                                  color: "#3c763d",
+                                  fontSize: "12px",
+                                }}
+                              >
+                                Character count: {formContent?.length}
+                                /300
+                              </p>
+                            )}
+                          {formContent?.length > 0 &&
+                            formContent?.length > 300 && (
+                              <p
+                                className="mt-3 py-2 px-2 fw-bold"
+                                style={{
+                                  fontSize: "14px",
+                                  background: "#f2dede",
+                                  color: "#a94442",
+                                  fontSize: "12px",
+                                }}
+                              >
+                                Character count: {formContent?.length}
+                                /300
+                              </p>
+                            )}
+                        </div>
+                      </div>
+                      <div className="submit-section text-center">
+                        <button
+                          type="submit"
+                          className="btn bg-primary text-white px-5 py-2 rounded"
+                        >
+                          Update
+                        </button>
+
+                        <button
+                          type="button"
+                          className="btn bg-primary text-white px-5 ms-1 py-2 rounded"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       )}

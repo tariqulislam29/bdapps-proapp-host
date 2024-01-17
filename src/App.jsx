@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import AllContent from './Pages/AllContent/AllContent'
@@ -15,28 +17,42 @@ import UpdateProfile from './Pages/Profile/UpdateProfile'
 import RegistrationForm from './Pages/RegistrationForm/RegistrationForm'
 
 function App() {
- 
+ const [authenticated, setAuthenticated] = useState(false);
+
+ useEffect(() => {
+   // Check if the user is authenticated based on the presence of a token in cookies
+   const token = Cookies.get("data"); // Replace 'your_token_key' with the actual name of your token key
+   setAuthenticated(!!token);
+ }, []);
     
 
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/registationform" element={<RegistrationForm />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/checkLength" element={<CheckLength />} />
-          <Route path="/application/list" element={<List />} />
-          <Route path="/application/new" element={<New />} />
-          <Route path="/myProfile/:userId" element={<MyProfile />} />
-          <Route path="/updateProfile/:userId" element={<UpdateProfile />} />
-          <Route path="/changePassword/:userId" element={<ChangePassword />} />
-          <Route path="/errorList" element={<ErrorList />} />
-          <Route path="/allContent" element={<AllContent />} />
-          <Route path="/batchContent" element={<BatchContent />} />
-          <Route path="/newContent" element={<NewContent />} />
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        {authenticated ? (
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/checkLength" element={<CheckLength />} />
+            <Route path="/application/list" element={<List />} />
+            <Route path="/application/new" element={<New />} />
+            <Route path="/myProfile/:userId" element={<MyProfile />} />
+            <Route path="/updateProfile/:userId" element={<UpdateProfile />} />
+            <Route
+              path="/changePassword/:userId"
+              element={<ChangePassword />}
+            />
+            <Route path="/errorList" element={<ErrorList />} />
+            <Route path="/allContent" element={<AllContent />} />
+            <Route path="/batchContent" element={<BatchContent />} />
+            <Route path="/newContent" element={<NewContent />} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="/registationform" element={<RegistrationForm />} />
+
+            <Route path="/*"  element={<Login />} />
+          </Routes>
+        )}
       </BrowserRouter>
     </>
   );

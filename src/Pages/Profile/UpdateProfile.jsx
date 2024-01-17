@@ -98,7 +98,7 @@ const formattedDateString = `${year}-${month}-${day}`;
                       </td>
                     </tr>
                   </thead>
-                  <tbody style={{ fontSize: "12px" }}>
+                  <tbody style={{ fontSize: "14px" }}>
                     <tr>
                       <td>
                         <form
